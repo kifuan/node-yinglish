@@ -16,9 +16,9 @@
 只暴露了一个接口！这次加上了`export default`，于是你可以随便取名。
 
 ```ts
-import translate from 'node-yinglish'
+import chs2yin from 'node-yinglish'
 
-console.log(translate('吃葡萄不吐葡萄皮。'))
+console.log(chs2yin('吃葡萄不吐葡萄皮。'))
 // ……吃〇〇……不……吐葡……葡萄〇……
 ```
 
@@ -26,7 +26,7 @@ console.log(translate('吃葡萄不吐葡萄皮。'))
 
 ```js
 // 默认导出
-const translate_default = require('node-yinglish').default
+const chs2yin = require('node-yinglish').default
 // 解构导出
-const { translate } = require('node-yinglish')
+const { chs2yin } = require('node-yinglish')
 ```
