@@ -6,8 +6,8 @@ function probably(probability: number): boolean {
 }
 
 const fragments = {
-  get ellipsis() {
-    return probably(0.5) ? '...' : '......'
+  ellipsis(l: number) {
+    return probably(l) ? '...' : this.emoji
   },
   get emoji() {
     const emojis = ['😍', '❤', '🥺', '🥵', '🥰']
@@ -19,7 +19,7 @@ function convertWord({ word, tag }: TaggedWord, level: number): string {
   if (!probably(level))
     return word
 
-  word = word.replace(/,|，|。/g, () => fragments.ellipsis).replace(/!|！/g, '❤')
+  word = word.replace(/,|，|。/g, fragments.ellipsis(level)).replace(/!|！/g, fragments.emoji)
 
   if (tag === 'x')
     return word
@@ -31,11 +31,12 @@ function convertWord({ word, tag }: TaggedWord, level: number): string {
     return word + fragments.emoji
 
   if (probably(level))
-    return word[0] + fragments.ellipsis + word
+    return word[0] + fragments.ellipsis(level) + word
 
-  return fragments.ellipsis + word
+  return fragments.ellipsis(level) + word
 }
 
-export function chs2yin(sentence: string, level = 0.5) {
+export function chs2yin(sentence: string, level = 0.7) {
   return jieba.tag(sentence).map(word => convertWord(word, level)).join('')
 }
+
