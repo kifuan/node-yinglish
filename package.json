@@ -1,9 +1,12 @@
 {
   "name": "node-yinglish",
-  "version": "1.0.14",
+  "version": "1.0.15",
   "description": "淫语翻译器!",
   "author": "kifuan",
   "license": "MIT",
+  "files": [
+    "dist"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/kifuan/node-yinglish"
